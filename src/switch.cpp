@@ -72,6 +72,12 @@ int main(int argc, char* argv[])
 {
     argh::parser args(argc, argv, argh::parser::PREFER_PARAM_FOR_UNREG_OPTION);
 
+    if (args[{"-h", "--help"}])
+    {
+        usage(args);
+        return 0;
+    }
+
     if (!args(2))
     {
         return usage(args);

@@ -70,6 +70,7 @@ current directory. This can be controlled using the `--ozw-user-path` option.
     cd build
     cmake ..
     make
+    ./zwave-switch -h
 
 The tool relies heavily on [OpenZWave][1]. Make sure the library is installed
 before trying to compile the tool. If OpenZWave is installed in a non-standard
