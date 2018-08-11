@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 #include <openzwave/Manager.h>
 
 #include "on.hpp"
@@ -92,7 +94,7 @@ namespace zwave_switch
 
                 if (listen_)
                 {
-                    std::cout << "Listening..." << std::endl;
+                    std::cout << "Listening [pid: " << getpid() << "]..." << std::endl;
                     return;
                 }
 

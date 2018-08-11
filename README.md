@@ -39,14 +39,14 @@ Turn the switch on/off:
 Run continuously and listen for signals to turn the switch on/off:
 
     $ zwave-switch /dev/ttyACM0 listen 2
-    Listening...
+    Listening [pid: 10400]...
     Switch 2 [ZW096 Smart Switch 6] is ON
     Switch 2 [ZW096 Smart Switch 6] is OFF
 
 Send `SIGUSR1`/`SIGUSR2` to turn the switch on/off:
 
-    $ pkill -SIGUSR1 zwave-switch
-    $ pkill -SIGUSR2 zwave-switch
+    $ kill -SIGUSR1 10400
+    $ kill -SIGUSR2 10400
 
 Get or set a configuration value (in this example the default state of the
 switch after a power cycle):
