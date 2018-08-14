@@ -24,6 +24,7 @@ namespace zwave_switch
         bool value_ = true;
         bool listen_ = false;
         bool found_ = false;
+        bool dead_ = false;
         OZW::ValueID value_id_;
         std::atomic_bool queried_;
     };

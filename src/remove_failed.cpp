@@ -74,6 +74,8 @@ namespace zwave_switch
 
                     pending_controller_commands_++;
                 }
+
+                break;
             }
             default:
             {

@@ -92,9 +92,14 @@ namespace zwave_switch
                     return;
                 }
 
+                if (dead_)
+                {
+                    return;
+                }
+
                 if (listen_)
                 {
-                    std::cout << "Listening [pid: " << getpid() << "]..." << std::endl;
+                    std::cout << "Listening for signals [pid: " << getpid() << "]..." << std::endl;
                     return;
                 }
 
@@ -108,13 +113,29 @@ namespace zwave_switch
             }
             case OZW::Notification::Type_Notification:
             {
-                if (notification->GetNotification() == OZW::Notification::Code_Dead &&
-                    notification->GetNodeId() == node_id_)
+                if (notification->GetNodeId() == node_id_)
                 {
-                    std::cout << "Node has failed" << std::endl;
-                    done_(false);
-                    return;
+                    switch (notification->GetNotification())
+                    {
+                        case OZW::Notification::Code_Timeout:
+                        {
+                            std::cout << "Node timed out" << std::endl;
+                            break;
+                        }
+                        case OZW::Notification::Code_Dead:
+                        {
+                            dead_ = true;
+                            std::cout << "Node is dead" << std::endl;
+                            done_(false);
+                            return;
+                        }
+                        default:
+                        {
+                        }
+                    }
                 }
+
+                break;
             }
             default:
             {

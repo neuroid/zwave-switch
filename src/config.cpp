@@ -127,6 +127,8 @@ namespace zwave_switch
                     done_(false);
                     return;
                 }
+
+                break;
             }
             default:
             {
