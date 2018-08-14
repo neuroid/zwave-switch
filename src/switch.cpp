@@ -159,7 +159,7 @@ int main(int argc, char* argv[])
         return usage(args);
     }
 
-    auto options = OZW::Options::Create(args({"-c", "--ozw-config-path"}).str(),
+    auto options = OZW::Options::Create(args({"-c", "--ozw-config-path"}, "/etc/openzwave").str(),
                                         args({"-u", "--ozw-user-path"}).str(),
                                         "");
     options->AddOptionBool("ConsoleOutput", false);
