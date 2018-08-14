@@ -68,7 +68,7 @@ current directory. This can be controlled using the `--ozw-user-path` option.
     git submodule update --init
     mkdir build
     cd build
-    cmake ..
+    cmake -DCMAKE_BUILD_TYPE=Release ..
     make
     ./zwave-switch -h
 
@@ -76,7 +76,7 @@ The tool relies heavily on [OpenZWave][1]. Make sure the library is installed
 before trying to compile the tool. If OpenZWave is installed in a non-standard
 location the `OPENZWAVE_PREFIX` variable might be useful:
 
-    cmake -DOPENZWAVE_PREFIX=/opt/openzwave ..
+    cmake -DOPENZWAVE_PREFIX=/opt/openzwave -DCMAKE_BUILD_TYPE=Release ..
 
 [1]: https://github.com/OpenZWave/open-zwave
 
@@ -104,7 +104,7 @@ If everything is set, the cross compilation is a simple as:
 
     $ mkdir build-openwrt
     $ cd build-openwrt
-    $ cmake -DCMAKE_TOOLCHAIN_FILE=../openwrt-toolchain.cmake ..
+    $ cmake -DCMAKE_TOOLCHAIN_FILE=../openwrt-toolchain.cmake -DCMAKE_BUILD_TYPE=Release ..
     -- NOTE: build with `STAGING_DIR=/home/user/src/openwrt/staging_dir/toolchain-arm_cortex-a9+vfpv3_gcc-7.3.0_musl_eabi make`
     -- NOTE: build with `STAGING_DIR=/home/user/src/openwrt/staging_dir/toolchain-arm_cortex-a9+vfpv3_gcc-7.3.0_musl_eabi make`
     -- The C compiler identification is GNU 7.3.0
@@ -134,6 +134,11 @@ target system:
 
     $ file zwave-switch
     zwave-switch: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-musl-armhf.so.1, not stripped
+
+On the target system you might need to install the `cdc_acm` module for
+`/dev/ttyACM?` to become available:
+
+    opkg install kmod-usb-acm
 
 [2]: https://openwrt.org/docs/guide-developer/build-system/start
 
