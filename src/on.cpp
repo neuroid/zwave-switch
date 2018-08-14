@@ -92,14 +92,14 @@ namespace zwave_switch
                     return;
                 }
 
-                if (dead_)
-                {
-                    return;
-                }
-
                 if (listen_)
                 {
                     std::cout << "Listening for signals [pid: " << getpid() << "]..." << std::endl;
+                    return;
+                }
+                else if (dead_)
+                {
+                    done_(false);
                     return;
                 }
 
@@ -126,8 +126,7 @@ namespace zwave_switch
                         {
                             dead_ = true;
                             std::cout << "Node is dead" << std::endl;
-                            done_(false);
-                            return;
+                            break;
                         }
                         default:
                         {
