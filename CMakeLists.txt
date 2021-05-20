@@ -19,6 +19,8 @@ include_directories(${OPENZWAVE_INCLUDE_DIR}
                     # Annoyingly, the library is not using relative imports
                     ${OPENZWAVE_INCLUDE_DIR}/openzwave)
 
+find_package(Threads)
+
 add_executable(zwave-switch
                src/switch.cpp
                src/add.cpp
@@ -28,4 +30,5 @@ add_executable(zwave-switch
                src/remove.cpp
                src/remove_failed.cpp)
 target_link_libraries(zwave-switch
-                      ${OPENZWAVE_LIBRARY})
+                      ${OPENZWAVE_LIBRARY}
+                      ${CMAKE_THREAD_LIBS_INIT})
