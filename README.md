@@ -23,7 +23,7 @@ A tool for controlling Z-Wave switches.
 
 Add a new node to the network:
 
-    $ zwave-switch /dev/ttyACM0
+    $ zwave-switch /dev/ttyACM0 add
     Added node 1 [ZW090 Z-Stick Gen5 EU]
     Press a button on your switch to add it to the network...
     Added node 2 [ZW096 Smart Switch 6]
