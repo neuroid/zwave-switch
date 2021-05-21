@@ -11,17 +11,10 @@ namespace zwave_switch
 
     void add::on_notification(const OZW::Notification* notification)
     {
+        handler::on_notification(notification);
+
         switch (notification->GetType())
         {
-            case OZW::Notification::Type_NodeQueriesComplete:
-            {
-                std::cout << "Added node "
-                          << static_cast<int32_t>(notification->GetNodeId())
-                          << " [" << OZW::Manager::Get()->GetNodeProductName(
-                                 notification->GetHomeId(), notification->GetNodeId()) << "]"
-                          << std::endl;
-                break;
-            }
             case OZW::Notification::Type_AllNodesQueried:
             case OZW::Notification::Type_AllNodesQueriedSomeDead:
             {

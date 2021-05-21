@@ -11,6 +11,8 @@ namespace zwave_switch
 
     void remove::on_notification(const OZW::Notification* notification)
     {
+        handler::on_notification(notification);
+
         switch (notification->GetType())
         {
             case OZW::Notification::Type_NodeRemoved:

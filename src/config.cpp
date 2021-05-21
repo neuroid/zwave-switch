@@ -17,6 +17,8 @@ namespace zwave_switch
 
     void config::on_notification(const OZW::Notification* notification)
     {
+        handler::on_notification(notification);
+
         switch (notification->GetType())
         {
             case OZW::Notification::Type_NodeAdded:

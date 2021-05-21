@@ -14,7 +14,7 @@ namespace zwave_switch
     public:
         typedef std::function<void(bool)> callback;
 
-        virtual void on_notification(const OZW::Notification* notification) = 0;
+        virtual void on_notification(const OZW::Notification* notification);
 
     protected:
         handler(const callback& done);
