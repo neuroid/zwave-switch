@@ -62,10 +62,9 @@ switch after a power cycle):
     $ zwave-switch /dev/ttyACM0 config set 2 20 2
     Always off
 
-Consult the `zwcfg_*.xml` file for possible configuration values. The file
-is created automatically by OpenZWave. By default it is created in the
-current directory. This can be controlled using the `--ozw-user-path` option.
-
+Consult the `ozwcache_*.xml` (or `zwcfg_*.xml`) file for possible configuration
+values. The file is created automatically by OpenZWave. By default it is created
+in the current directory. This can be controlled using the `--ozw-user-path` option.
 
 ## Building
 
