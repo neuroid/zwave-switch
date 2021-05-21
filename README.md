@@ -38,16 +38,16 @@ Add a new node to the network:
 Turn the switch on/off:
 
     $ zwave-switch /dev/ttyACM0 on 2
-    Switch 2 [ZW096 Smart Switch 6] is ON
+    Switch 2 [ZW096 Smart Switch 6] is now ON
     $ zwave-switch /dev/ttyACM0 off 2
-    Switch 2 [ZW096 Smart Switch 6] is OFF
+    Switch 2 [ZW096 Smart Switch 6] is now OFF
 
 Run continuously and listen for signals to turn the switch on/off:
 
     $ zwave-switch /dev/ttyACM0 listen 2
     Listening [pid: 10400]...
-    Switch 2 [ZW096 Smart Switch 6] is ON
-    Switch 2 [ZW096 Smart Switch 6] is OFF
+    Switch 2 [ZW096 Smart Switch 6] is now ON
+    Switch 2 [ZW096 Smart Switch 6] is now OFF
 
 Send `SIGUSR1`/`SIGUSR2` to turn the switch on/off:
 

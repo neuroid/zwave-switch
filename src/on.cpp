@@ -42,6 +42,25 @@ namespace zwave_switch
                         value_id.GetType() == OZW::ValueID::ValueType_Bool)
                     {
                         value_id_ = value_id;
+
+                        bool value = false;
+                        if (!OZW::Manager::Get()->GetValueAsBool(value_id_, &value))
+                        {
+                            done_(false);
+                            return;
+                        }
+
+                        std::cout << "Switch "
+                                  << static_cast<int32_t>(notification->GetNodeId())
+                                  << " [" << OZW::Manager::Get()->GetNodeProductName(
+                                         notification->GetHomeId(), notification->GetNodeId()) << "]"
+                                  << " is currently " << (value ? "ON" : "OFF") << std::endl;
+
+                        if (!listen_ && value == value_)
+                        {
+                            done_(true);
+                            return;
+                        }
                     }
                 }
 
@@ -64,7 +83,7 @@ namespace zwave_switch
                               << static_cast<int32_t>(notification->GetNodeId())
                               << " [" << OZW::Manager::Get()->GetNodeProductName(
                                      notification->GetHomeId(), notification->GetNodeId()) << "]"
-                              << " is " << (value ? "ON" : "OFF") << std::endl;
+                              << " is now " << (value ? "ON" : "OFF") << std::endl;
 
                     if (!listen_)
                     {
